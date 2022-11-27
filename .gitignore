@@ -3,3 +3,7 @@ node_modules
 .env
 
 # frase chave delivery app uceff
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

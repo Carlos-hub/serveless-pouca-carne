@@ -1,16 +1,25 @@
 {
  "nuxt.isNuxtApp": false,
  "cSpell.words": [
+  "AUTHCONFIGSECRET",
+  "AUTHSECRET",
   "cadastrar",
   "cliente",
   "clientes",
   "confirma",
   "Criptografar",
+  "Desconto",
+  "descricao",
   "Entregador",
+  "imagem",
+  "ingredientes",
   "Nasc",
   "Nascimento",
+  "produto",
+  "Produtos",
   "Salvar",
   "senha",
-  "telefone"
+  "telefone",
+  "unitario"
  ]
 }

@@ -1,6 +1,6 @@
 import { prisma } from "../../../databse/prismaClient";
 import { compare } from 'bcrypt'
-import { sign } from 'jsonwebtoken'
+import { sign, decode } from 'jsonwebtoken'
 interface IAuthenticateClient{
   email:string;
   senha:string;
@@ -27,11 +27,16 @@ export class AuthenticateClientUseCase{
         throw new Error("Credentials invalid");
       }
    // gerar token
-      const token = sign({email}, "6ee0933944d2645860af1556003a31db", {
+      const token = sign({email}, "6ee0933944d2645860af1556003a31d" , {
         subject: client.id,
         expiresIn: "1d"
       })
-      return token;
+
+      const decodes = decode(token,{complete: true})
+
+      console.log(decodes?.payload.sub);
+
+      return { token,decodes};
 
   
   }

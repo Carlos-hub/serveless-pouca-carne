@@ -1,7 +1,8 @@
 import express, { json, NextFunction, Request, request, Response, response } from "express";
 import "express-async-errors";
 import { routes } from "./routes";
-
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config()
 const app = express();
 app.use(express.json())
 

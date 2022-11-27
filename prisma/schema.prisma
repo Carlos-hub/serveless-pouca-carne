@@ -43,6 +43,10 @@ model Pedidos {
   nome_entregador     String
   id_entregador       Int
   produtosId          Int
+  quantidade          Int
+  status              String
+  created_at          DateTime @default(now())
+  end_at              DateTime
 
   @@map("pedidos")
 }
@@ -64,6 +68,8 @@ model Produtos {
   valor_unitario String
   imagem         String
   pedidos        Pedidos[]
+  valor          Float
+  valorDesconto  Float
 
   @@unique([id])
   @@map("produtos")
