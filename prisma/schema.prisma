@@ -26,27 +26,22 @@ model Clientes {
 }
 
 model Pedidos {
-  id                  String   @id @default(uuid())
+  id                  String    @id @default(uuid())
   nome                String
   preco               Float
   cod_pedido          String
-  cliente             Clientes @relation(fields: [id_cliente], references: [id])
+  cliente             Clientes  @relation(fields: [id_cliente], references: [id])
   id_cliente          String
-  nome_cliente        String
-  produtos            Produtos @relation(fields: [id_produto], references: [id])
+  produtos            Produtos  @relation(fields: [id_produto], references: [id])
   id_produto          String
   cliente_numero      String
-  id_cliente_endereco Int
+  id_cliente_endereco String
   cliente_endereco    String
   forma_pagamento     String
-  telefone_entregador Int
-  nome_entregador     String
-  id_entregador       Int
-  produtosId          Int
-  quantidade          Int
+  id_entregador       String
   status              String
-  created_at          DateTime @default(now())
-  end_at              DateTime
+  created_at          DateTime  @default(now())
+  end_at              DateTime?
 
   @@map("pedidos")
 }

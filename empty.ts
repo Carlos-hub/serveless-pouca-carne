@@ -1,0 +1,1 @@
+export const AUTHSECRET = "6ee0933944d2645860af1556003a31d"
