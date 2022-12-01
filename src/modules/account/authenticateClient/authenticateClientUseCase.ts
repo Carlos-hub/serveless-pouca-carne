@@ -1,6 +1,6 @@
 import { prisma } from "../../../databse/prismaClient";
 import { compare } from 'bcrypt'
-import { AUTHSECRET } from "../../../../empty";
+import { AUTHSECRET } from "../../../../empty.log";
 import { sign, decode, verify } from 'jsonwebtoken';
 interface IAuthenticateClient{
   email:string;
