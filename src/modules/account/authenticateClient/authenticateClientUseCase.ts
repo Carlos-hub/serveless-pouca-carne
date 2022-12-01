@@ -28,7 +28,7 @@ export class AuthenticateClientUseCase{
         throw new Error("Credentials invalid");
       }
    // gerar token
-      const token = sign({email}, env.AUTHSECRET , {
+      const token = sign({email}, AUTHSECRET , {
         subject: client.id,
         expiresIn: "1d"
       })
