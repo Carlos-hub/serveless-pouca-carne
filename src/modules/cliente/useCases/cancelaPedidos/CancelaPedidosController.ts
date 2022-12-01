@@ -7,9 +7,10 @@ export class CancelaPedidosController{
   async handle(request:Request,response:Response){
    const {id} = request.body;
    const cancelaPedidosUseCase = new CancelaPedidosUseCase();
+   console.log(id)
    cancelaPedidosUseCase.execute(
     id
    )
-   return cancelaPedidosUseCase;
+   return response.status(202).json(cancelaPedidosUseCase);
   }
 }
