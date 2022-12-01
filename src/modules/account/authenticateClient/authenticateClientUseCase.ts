@@ -1,6 +1,5 @@
 import { prisma } from "../../../databse/prismaClient";
 import { compare } from 'bcrypt'
-import { AUTHSECRET } from "../../../../empty.log";
 import { sign, decode, verify } from 'jsonwebtoken';
 interface IAuthenticateClient{
   email:string;
@@ -35,7 +34,7 @@ export class AuthenticateClientUseCase{
 
       const decodes = decode(token,{complete: true})
 
-      const verifyies = verify(token, AUTHSECRET);
+      const verifyies = verify(token, "6ee0933944d2645860af1556003a31d");
 
       return { token,decodes};
 
