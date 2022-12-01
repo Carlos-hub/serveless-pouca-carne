@@ -34,6 +34,6 @@ app.use((err:Error,request:Request,response:Response, next:NextFunction) =>{
   })
 })
 
-app.listen(5000,()=>{
+app.listen(process.env.PORT || 5000,()=>{
   console.log("server is running at the port 5000")
 })
