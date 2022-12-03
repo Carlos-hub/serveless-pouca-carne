@@ -16,7 +16,7 @@ model Clientes {
   email          String
   cpf            String
   telefone       String
-  dataNascimento DateTime
+  datanascimento DateTime
   senha          String
   pedidos        Pedidos[]
   enderecos      Endereco[]
@@ -64,7 +64,7 @@ model Produtos {
   imagem         String
   pedidos        Pedidos[]
   valor          Float
-  valorDesconto  Float
+  valordesconto  Float
 
   @@unique([id])
   @@map("produtos")
