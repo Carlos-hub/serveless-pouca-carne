@@ -7,12 +7,12 @@ interface ICreateProdutos{
  valor_unitario:string;
  imagem:string;
  valor:number;
- valorDesconto:number;
+ valordesconto:number;
 }
 
 
 export class CreateProdutosUseCase{
-  async execute({nome,descricao,ingredientes,valor_unitario,imagem,valor,valorDesconto}:ICreateProdutos){
+  async execute({nome,descricao,ingredientes,valor_unitario,imagem,valor,valordesconto}:ICreateProdutos){
      // valida se o produto existe
       const produtoExist = await prisma.produtos.findFirst({
        where:{
@@ -32,7 +32,7 @@ export class CreateProdutosUseCase{
        valor_unitario,
        imagem,
        valor,
-       valorDesconto
+       valordesconto
       }
      })
      return produto;

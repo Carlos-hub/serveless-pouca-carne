@@ -11,7 +11,7 @@ export class CreateProdutosController{
      valor_unitario,
      imagem,
      valor,
-     valorDesconto} = request.body;
+     valordesconto} = request.body;
 
      const createProdutosUseCase = new CreateProdutosUseCase();
      const produto = await createProdutosUseCase.execute({
@@ -21,7 +21,7 @@ export class CreateProdutosController{
       valor_unitario,
       imagem,
       valor,
-      valorDesconto
+      valordesconto
      })
 
      return response.status(201).json(produto);

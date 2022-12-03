@@ -6,13 +6,13 @@ interface ICreateClient{
   email:string;
   cpf: string;
   telefone:string;
-  dataNascimento:Date;
+  datanascimento:Date;
   senha:string;
 }
 
 export class CreateClientUseCase{
 
-  async execute({nome,email,cpf,telefone,dataNascimento,senha}:ICreateClient){
+  async execute({nome,email,cpf,telefone,datanascimento,senha}:ICreateClient){
     // validar se usuário existe
     const clientExist = await prisma.clientes.findFirst({
       where:{
@@ -33,7 +33,7 @@ export class CreateClientUseCase{
         email,
         cpf,
         telefone,
-        dataNascimento,
+        datanascimento,
         senha:hashSenha
       }
     })
