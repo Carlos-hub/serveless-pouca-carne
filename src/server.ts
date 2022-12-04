@@ -15,11 +15,6 @@ const app = express();
 app.use(cors(options))
 app.use(express.json())
 
-app.use((req,res,next) =>{
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173, https://pouca-carne.vercel.app/");
-  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-  app.use(cors());
-})
 
 app.get("/",(req,res) =>{
   res.json("Hello World!")   
@@ -41,5 +36,5 @@ app.use((err:Error,request:Request,response:Response, next:NextFunction) =>{
 })
 
 app.listen(process.env.PORT || 5000,()=>{
-  console.log("server is running at the port 5000")
+  console.log(`server is running at the port ${process.env.PORT}`)
 })

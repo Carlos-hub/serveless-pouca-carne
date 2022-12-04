@@ -12,6 +12,13 @@ export class CreateProdutosController{
      imagem,
      valor,
      valordesconto} = request.body;
+     console.log(nome,
+        descricao,
+        ingredientes,
+        valor_unitario,
+        imagem,
+        valor,
+        valordesconto)
 
      const createProdutosUseCase = new CreateProdutosUseCase();
      const produto = await createProdutosUseCase.execute({
