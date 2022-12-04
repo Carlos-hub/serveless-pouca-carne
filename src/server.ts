@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import { routes } from "./routes";
 
-const allowedOrigins = ['http://localhost:5173', 'http://191.240.128.102', 'pouca-carne-mkfddqw4y-carlos-hub.vercel.app', 'https://pouca-carne.vercel.app/'];
+const allowedOrigins = ['http://localhost:5173', 'http://191.240.128.102', 'https://pouca-carne.vercel.app/'];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins
