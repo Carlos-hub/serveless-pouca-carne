@@ -16,7 +16,7 @@ model Clientes {
   email          String
   cpf            String
   telefone       String
-  datanascimento DateTime?
+  datanascimento String?
   senha          String
   pedidos        Pedidos[]
   enderecos      Endereco[]
