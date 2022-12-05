@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 import { prisma } from "../../../../databse/prismaClient";
 
 interface ICreateDelivery{
@@ -10,9 +11,20 @@ interface ICreateDelivery{
 export class CreateDeliveryUseCase{
 
  async execute({id_produto,preco,id_cliente,cliente_numero,forma_pagamento}:ICreateDelivery){
-  const date = new Date();
-  const codPedido = `PED`
-  const nome = ` Pedido name`
+  let date = new Date();
+  const day = date.getDay();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+
+  const client = await prisma.clientes.findFirst({
+    where:{
+      id:{
+        equals: id_cliente
+      }
+    }
+  })
+  const codPedido = `PED${year}${month}${day} ${client?.nome}`
+  const nome = `${client?.nome}${month} PED`
 
   const cadastraPedido = await prisma.pedidos.create({
    data:{

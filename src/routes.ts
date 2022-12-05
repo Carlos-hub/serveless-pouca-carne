@@ -4,6 +4,7 @@ import { CancelaPedidosController } from "./modules/cliente/useCases/cancelaPedi
 
 import { CreateClientController } from "./modules/cliente/useCases/createClient/createClientController";
 import { CreateDeliveryController } from "./modules/cliente/useCases/createDelivery/createDeliveryController";
+import { GetDataClientController } from "./modules/cliente/useCases/getDataClient/getDataClientController";
 import { GetDeliveryController } from "./modules/cliente/useCases/getProdutos/getDeliveryController";
 import { CreateEntregadorController } from "./modules/entregador/useCase/createEntegrador/createEntregadorController";
 import { AprovaPedidosController } from "./modules/restaurante/UseCase/aprovePedidos/AprovaPedidosController";
@@ -24,6 +25,7 @@ const aprovaPedidosController = new AprovaPedidosController();
 const getProdutos = new GetDeliveryController();
 const cancelaPedidos = new CancelaPedidosController(); 
 const cancelaPedidosRestaurante = new CancelaPedidosRestauranteController();
+const getDataClientController = new GetDataClientController();
 // entregador
 routes.post('/entregador/signup',createEntregadorController.handle);
 
@@ -33,6 +35,7 @@ routes.post('/client/login',authenticateClientController.handle);
 routes.post('/client/delivery',createDeliveryController.handle);
 routes.get('/client/produtos', getDelivery.handle);
 routes.post('/client/cancela',cancelaPedidos.handle);
+routes.post('/client/data',getDataClientController.handle);
 
 // Restaurante
 routes.post('/company/produto/signup',createProdutosController.handle);
