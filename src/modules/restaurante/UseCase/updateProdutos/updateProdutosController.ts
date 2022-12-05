@@ -12,7 +12,7 @@ export class UpdateProdutosController{
         valor_unitario,
         imagem,
         valor,
-        valorDesconto} = request.body;
+        valordesconto} = request.body;
 
      const updateProdutosUseCase = new UpdateProdutosUseCase();
      const produto = await updateProdutosUseCase.execute({
@@ -23,7 +23,7 @@ export class UpdateProdutosController{
         valor_unitario,
         imagem,
         valor,
-        valorDesconto
+        valordesconto
      })
 
      return response.status(201).json(produto);

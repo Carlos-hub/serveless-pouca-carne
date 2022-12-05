@@ -26,6 +26,7 @@
   "Entregador",
   "Entregadores",
   "entregas",
+  "existe",
   "imagem",
   "ingredientes",
   "logado",
@@ -44,6 +45,8 @@
   "Salvar",
   "senha",
   "telefone",
-  "unitario"
+  "unitario",
+  "valida",
+  "valordesconto"
  ]
 }

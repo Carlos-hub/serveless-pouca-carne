@@ -8,12 +8,12 @@ interface IUpdateProdutos{
   valor_unitario:string;
   imagem:string;
   valor:number;
-  valorDesconto:number;
+  valordesconto:number;
 }
 
 
 export class UpdateProdutosUseCase{
-  async execute({id,nome,descricao,ingredientes,valor_unitario,imagem,valor,valorDesconto}:IUpdateProdutos){
+  async execute({id,nome,descricao,ingredientes,valor_unitario,imagem,valor,valordesconto}:IUpdateProdutos){
      // valida se o produto existe
       const produtoExist = await prisma.produtos.findFirst({
        where:{
@@ -36,7 +36,7 @@ export class UpdateProdutosUseCase{
        valor_unitario,
        imagem,
        valor,
-       valorDesconto
+       valordesconto
       }
      })
      return produto;

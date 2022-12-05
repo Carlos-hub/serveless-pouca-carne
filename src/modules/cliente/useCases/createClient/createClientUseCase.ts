@@ -6,7 +6,7 @@ interface ICreateClient{
   email:string;
   cpf: string;
   telefone:string;
-  datanascimento:Date;
+  datanascimento:string;
   senha:string;
 }
 
