@@ -23,7 +23,7 @@ export class UpdateProdutosUseCase{
       if(!produtoExist){
        throw new Error("Product not Exist");
       }
-     // cadastra o produto
+     // atualiza o produto
 
      const produto = await prisma.produtos.update({
       where:{

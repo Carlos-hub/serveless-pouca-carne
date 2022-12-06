@@ -1,5 +1,5 @@
 import { Request,Response } from "express";
-import { AuthenticateRestauranteUseCase } from "./authenticateClientUseCase";
+import { AuthenticateRestauranteUseCase } from "./authenticateRestauranteUseCase";
 
 export class AuthenticateRestauranteController{
    async handle(request:Request,response:Response){
