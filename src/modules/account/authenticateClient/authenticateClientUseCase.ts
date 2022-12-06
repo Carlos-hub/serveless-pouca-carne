@@ -34,8 +34,6 @@ export class AuthenticateClientUseCase{
 
       const decodes = decode(token,{complete: true})
 
-      const verifyies = verify(token, "6ee0933944d2645860af1556003a31d");
-
       return { token,decodes};
 
   

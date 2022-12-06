@@ -26,21 +26,50 @@ export class CreateDeliveryUseCase{
   const codPedido = `PED${year}${month}${day} ${client?.nome}`
   const nome = `${client?.nome}${month} PED`
 
-  const cadastraPedido = await prisma.pedidos.create({
-   data:{
-     nome,
-     id_produto,
-     preco,
-     id_cliente,
-     cliente_numero,
-     forma_pagamento,
-     cod_pedido:codPedido,
-     id_cliente_endereco:"",
-     cliente_endereco: "teste",
-     id_entregador:"",
-     status: "pendente"
-   }
+  const endereco = await prisma.endereco.findFirst({
+    where:{
+      id_cliente:{
+        equals:id_cliente
+      }
+    }
   })
-  return cadastraPedido;
+  if(endereco){
+    try{
+    const produto = await prisma.produtos.findFirst({
+      where:{
+        id:{
+          equals:id_produto
+        }
+      }
+    }) 
+    if(produto){
+      try{
+        const cadastraPedido = await prisma.pedidos.create({
+          data:{
+            nome,
+            id_produto,
+            preco,
+            id_cliente,
+            cliente_numero,
+            forma_pagamento,
+            cod_pedido:codPedido,
+            id_cliente_endereco:endereco?.id,
+            cliente_endereco: endereco?.nome_rua,
+            id_entregador:"",
+            status: "pendente"
+          }
+         })
+         return cadastraPedido;
+      }catch(err){
+        console.log(err)
+      }
+    }
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+
+  
  }
 }

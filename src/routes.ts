@@ -21,6 +21,8 @@ import { CreateDeliveryController } from "./modules/cliente/useCases/createDeliv
 import { GetDataClientController } from "./modules/cliente/useCases/getDataClient/getDataClientController";
 import { GetProdutosClientController } from "./modules/cliente/useCases/getProdutos/getProdutosClientController";
 import { GetPedidosController } from "./modules/restaurante/UseCase/getPedidos/getPedidosController";
+import { CreateEnderecoController } from "./modules/cliente/useCases/createEndereco/createEnderecoController";
+import { GetPedidosClientController } from "./modules/cliente/useCases/getPedidos/getPedidosClientController";
 
 
 // Restaurante
@@ -28,17 +30,19 @@ const createClientController = new CreateClientController();
 const createEntregadorController = new CreateEntregadorController();
 const authenticateClientController = new AuthenticateClientController();
 const createProdutosController = new CreateProdutosController();
-const getDelivery = new GetProdutosClientController();
 const aprovaPedidosController = new AprovaPedidosController();
 const cancelaPedidosRestaurante = new CancelaPedidosRestauranteController();
 const getProdutosController = new GetProdutosController();
-const getPedidosController = new GetPedidosController();
+const getPedidos = new GetPedidosController();
+const getDelivery = new GetProdutosClientController();
 
 // Client
 const cancelaPedidos = new CancelaPedidosController(); 
 const getProdutos = new GetProdutosController();
 const createDeliveryController = new CreateDeliveryController();
 const getDataClientController = new GetDataClientController();
+const createEndereco = new CreateEnderecoController();
+const getPedidosClientController = new GetPedidosClientController();
 
 
 const routes = Router();
@@ -49,16 +53,18 @@ routes.post('/entregador/signup',createEntregadorController.handle);
 routes.post('/client/signup', createClientController.handle);
 routes.post('/client/login',authenticateClientController.handle);
 routes.post('/client/delivery',isAuthenticate,createDeliveryController.handle);
-routes.get('/client/produtos', getDelivery.handle);
+routes.get('/client/produtos', getProdutos.handle);
 routes.post('/client/cancela',isAuthenticate,cancelaPedidos.handle);
 routes.post('/client/data',isAuthenticate,getDataClientController.handle);
+routes.post('/client/endereco',isAuthenticate,createEndereco.handle);
+routes.post('/client/pedidos',getPedidos.handle)
 
 // Restaurante
 routes.post('/company/produto/signup',createProdutosController.handle);
 routes.post('/company/pedidos/aprove',isAuthenticate,aprovaPedidosController.handle);
 routes.get('/company/produtos/list',isAuthenticate,getProdutosController.handle);
 routes.post('/company/pedidos/cancela',isAuthenticate,cancelaPedidosRestaurante.handle);
-routes.get('/company/pedidos/',getPedidosController.handle)
+routes.get('/company/pedidos/',isAuthenticate,getPedidos.handle);
 
 
 export {routes};

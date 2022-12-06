@@ -8,6 +8,7 @@
   "AUTHCONFIGSECRET",
   "AUTHSECRET",
   "cadastra",
+  "cadastrado",
   "cadastrar",
   "Cancela",
   "Cancelado",
@@ -15,6 +16,7 @@
   "clientes",
   "confirma",
   "Confirmado",
+  "corresponde",
   "criar",
   "Criptografar",
   "databse",
@@ -28,6 +30,7 @@
   "Entregadores",
   "entregas",
   "existe",
+  "gerar",
   "imagem",
   "ingredientes",
   "logado",
@@ -42,12 +45,14 @@
   "preco",
   "produto",
   "Produtos",
+  "receber",
   "restaurante",
   "Salvar",
   "senha",
   "telefone",
   "unitario",
   "valida",
-  "valordesconto"
+  "valordesconto",
+  "verificar"
  ]
 }

@@ -12,13 +12,6 @@ export class GetDataClientUseCase{
      }
     }
    });
-   const clientendereco = await prisma.clientes.findFirst({
-    where:{
-     id:{
-      equals:id
-     }
-    }
-   });
    const clientReturn = {
     id : client?.id,
     nome: client?.nome,
