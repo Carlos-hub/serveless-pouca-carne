@@ -33,7 +33,7 @@ export class CreateDeliveryUseCase{
       }
     }
   })
-  if(endereco){
+  if(endereco != null){
     try{
     const produto = await prisma.produtos.findFirst({
       where:{
@@ -41,8 +41,8 @@ export class CreateDeliveryUseCase{
           equals:id_produto
         }
       }
-    }) 
-    if(produto){
+    })
+    if(produto != null){
       try{
         const cadastraPedido = await prisma.pedidos.create({
           data:{
@@ -63,13 +63,14 @@ export class CreateDeliveryUseCase{
       }catch(err){
         console.log(err)
       }
+    }else{
+      throw new Error("produto não existe");
     }
     }catch(err){
       console.log(err)
     }
+  }else{
+    throw new Error("endereco não existe");
   }
-
-
-  
  }
 }

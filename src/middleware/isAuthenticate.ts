@@ -7,7 +7,6 @@ export async function isAuthenticate(
 ){
   const {token}: string | string[] | undefined | any = request.headers;
   const isAuth = decode(token,{complete: true})
-  console.log(decode(token,{complete: true}))
   if(isAuth){
     next();
   }else{

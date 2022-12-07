@@ -4,8 +4,6 @@ import { isAuthenticate } from "./middleware/isAuthenticate";
 // Authenticate
 import { AuthenticateClientController } from "./modules/account/authenticateClient/authenticateClientController";
 
-// Entregador
-import { CreateEntregadorController } from "./modules/entregador/useCase/createEntegrador/createEntregadorController";
 
 // Restaurante
 import { AprovaPedidosController } from "./modules/restaurante/UseCase/aprovePedidos/AprovaPedidosController";
@@ -27,7 +25,6 @@ import { GetPedidosClientController } from "./modules/cliente/useCases/getPedido
 
 // Restaurante
 const createClientController = new CreateClientController();
-const createEntregadorController = new CreateEntregadorController();
 const authenticateClientController = new AuthenticateClientController();
 const createProdutosController = new CreateProdutosController();
 const aprovaPedidosController = new AprovaPedidosController();
@@ -47,7 +44,6 @@ const getPedidosClientController = new GetPedidosClientController();
 
 const routes = Router();
 // entregador
-routes.post('/entregador/signup',createEntregadorController.handle);
 
 // Client
 routes.post('/client/signup', createClientController.handle);
@@ -55,9 +51,9 @@ routes.post('/client/login',authenticateClientController.handle);
 routes.post('/client/delivery',isAuthenticate,createDeliveryController.handle);
 routes.get('/client/produtos', getProdutos.handle);
 routes.post('/client/cancela',isAuthenticate,cancelaPedidos.handle);
-routes.post('/client/data',isAuthenticate,getDataClientController.handle);
+routes.get('/client/data',isAuthenticate,getDataClientController.handle);
 routes.post('/client/endereco',isAuthenticate,createEndereco.handle);
-routes.post('/client/pedidos',getPedidos.handle)
+routes.get('/client/pedidos',isAuthenticate,getPedidos.handle)
 
 // Restaurante
 routes.post('/company/produto/signup',createProdutosController.handle);

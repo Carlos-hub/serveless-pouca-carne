@@ -70,15 +70,14 @@ model Produtos {
   @@map("produtos")
 }
 
-model Entregador {
+model Usuarios {
   id       String @id @default(uuid())
   nome     String
-  cpf      String
   telefone String
   email    String
   senha    String
 
-  @@map("entregador")
+  @@map("usuarios")
 }
 
 model Endereco {

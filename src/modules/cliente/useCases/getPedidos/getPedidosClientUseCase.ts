@@ -13,13 +13,14 @@ export class GetPedidosClientUseCase{
    })
    if(client){
     try{
-      const pedidos = await prisma.pedidos.findFirst({
+      const pedidos = await prisma.pedidos.findMany({
        where:{
         id_cliente:{
          equals:id
         }
        }
       });
+      console.log(pedidos)
       return pedidos;
     }catch(err){
       console.log(err);

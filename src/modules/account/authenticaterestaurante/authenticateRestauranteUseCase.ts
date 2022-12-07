@@ -11,7 +11,7 @@ export class AuthenticateRestauranteUseCase{
    // receber login e senha
 
    // verificar se username cadastrado
-      const client = await prisma.clientes.findFirst({
+      const client = await prisma.usuarios.findFirst({
         where:{
           email
         }
@@ -33,9 +33,6 @@ export class AuthenticateRestauranteUseCase{
       })
 
       const decodes = decode(token,{complete: true})
-
-      const verifyies = verify(token, "6ee0933944d2645860af1556003a31d");
-
       return { token,decodes};
 
   
