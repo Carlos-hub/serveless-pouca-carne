@@ -24,7 +24,7 @@ export class CreateDeliveryUseCase{
     }
   })
   const codPedido = `PED${year}${month}${day} ${client?.nome}`
-  const nome = `${client?.nome}${month} PED`
+  const nome = `PED${year}${month}${day} ${client?.nome}`
 
   const endereco = await prisma.endereco.findFirst({
     where:{
@@ -33,6 +33,7 @@ export class CreateDeliveryUseCase{
       }
     }
   })
+  console.log(endereco);
   if(endereco != null){
     try{
     const produto = await prisma.produtos.findFirst({

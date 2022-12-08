@@ -11,15 +11,13 @@ datasource db {
 }
 
 model Clientes {
-  id             String     @id @default(uuid())
+  id             String  @id @default(uuid())
   nome           String
   email          String
   cpf            String
   telefone       String
   datanascimento String?
   senha          String
-  pedidos        Pedidos[]
-  enderecos      Endereco[]
 
   @@unique([id])
   @@map("clientes")
@@ -30,9 +28,7 @@ model Pedidos {
   nome                String
   preco               Float
   cod_pedido          String
-  cliente             Clientes  @relation(fields: [id_cliente], references: [id])
   id_cliente          String
-  produtos            Produtos  @relation(fields: [id_produto], references: [id])
   id_produto          String
   cliente_numero      String
   id_cliente_endereco String
@@ -56,13 +52,12 @@ model Restaurante {
 }
 
 model Produtos {
-  id             String    @id @default(uuid())
+  id             String @id @default(uuid())
   nome           String
   descricao      String
   ingredientes   String
   valor_unitario String
   imagem         String
-  pedidos        Pedidos[]
   valor          Float
   valordesconto  Float
 
@@ -81,11 +76,10 @@ model Usuarios {
 }
 
 model Endereco {
-  id         String   @id @default(uuid())
+  id         String @id @default(uuid())
   nome_rua   String
   cep        String
   id_cliente String
-  clientes   Clientes @relation(fields: [id_cliente], references: [id])
 
   @@map("endereco")
 }
