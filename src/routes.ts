@@ -21,6 +21,7 @@ import { GetProdutosClientController } from "./modules/cliente/useCases/getProdu
 import { GetPedidosController } from "./modules/restaurante/UseCase/getPedidos/getPedidosController";
 import { CreateEnderecoController } from "./modules/cliente/useCases/createEndereco/createEnderecoController";
 import { GetPedidosClientController } from "./modules/cliente/useCases/getPedidos/getPedidosClientController";
+import { AuthenticateRestauranteController } from "./modules/account/authenticaterestaurante/authenticateRestauranteController";
 
 
 // Restaurante
@@ -31,7 +32,7 @@ const aprovaPedidosController = new AprovaPedidosController();
 const cancelaPedidosRestaurante = new CancelaPedidosRestauranteController();
 const getProdutosController = new GetProdutosController();
 const getPedidos = new GetPedidosController();
-const getDelivery = new GetProdutosClientController();
+const authenticateRestaurante = new AuthenticateRestauranteController();
 
 // Client
 const cancelaPedidos = new CancelaPedidosController(); 
@@ -40,7 +41,6 @@ const createDeliveryController = new CreateDeliveryController();
 const getDataClientController = new GetDataClientController();
 const createEndereco = new CreateEnderecoController();
 const getPedidosClientController = new GetPedidosClientController();
-
 
 const routes = Router();
 // entregador
@@ -61,6 +61,7 @@ routes.post('/company/pedidos/aprove',isAuthenticate,aprovaPedidosController.han
 routes.get('/company/produtos/list',isAuthenticate,getProdutosController.handle);
 routes.post('/company/pedidos/cancela',isAuthenticate,cancelaPedidosRestaurante.handle);
 routes.get('/company/pedidos/',isAuthenticate,getPedidos.handle);
+routes.post('/company/login',authenticateRestaurante.handle)
 
 
 export {routes};

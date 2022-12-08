@@ -12,13 +12,20 @@ export class GetDataClientUseCase{
      }
     }
    });
+   const clientLocation = await prisma.endereco.findFirst({
+    where:{
+      id
+    }
+   })
    const clientReturn = {
     id : client?.id,
     nome: client?.nome,
     email: client?.email,
     cpf: client?.cpf,
     telefone:client?.telefone,
-    dataNascimento: client?.datanascimento
+    dataNascimento: client?.datanascimento,
+    endereco:clientLocation?.nome_rua,
+    cep:clientLocation?.cep
    }
    return clientReturn;
  }
