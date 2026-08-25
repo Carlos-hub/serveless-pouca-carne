@@ -4,6 +4,11 @@
    "outDir": "dist",
    "strict": true,
    "lib": ["esnext"],
-   "esModuleInterop": true
+   "esModuleInterop": true,
+   "typeRoots": ["./node_modules/@types", "./src/@types"]
+ },
+ "include": ["src/**/*.ts", "prisma/**/*.ts"],
+ "ts-node": {
+   "files": true
  }
 }

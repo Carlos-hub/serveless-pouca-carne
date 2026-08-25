@@ -1,6 +1,7 @@
 import { prisma } from "../../../databse/prismaClient";
 import { compare } from 'bcrypt'
 import { sign, decode, verify } from 'jsonwebtoken';
+import { JWT_SECRET } from "../../../config/auth";
 interface IAuthenticateRestaurante{
   email:string;
   senha:string;
@@ -27,7 +28,7 @@ export class AuthenticateRestauranteUseCase{
         throw new Error("Credentials invalid");
       }
    // gerar token
-      const token = sign({email}, "6ee0933944d2645860af1556003a31d" , {
+      const token = sign({email}, JWT_SECRET, {
         subject: client.id,
         expiresIn: "1d"
       })

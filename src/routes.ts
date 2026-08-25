@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { isAuthenticate } from "./middleware/isAuthenticate";
+import { isAuthenticateRestaurante } from "./middleware/isAuthenticateRestaurante";
 
 // Authenticate
 import { AuthenticateClientController } from "./modules/account/authenticateClient/authenticateClientController";
@@ -53,14 +54,14 @@ routes.get('/client/produtos', getProdutos.handle);
 routes.post('/client/cancela',isAuthenticate,cancelaPedidos.handle);
 routes.get('/client/data',isAuthenticate,getDataClientController.handle);
 routes.post('/client/endereco',isAuthenticate,createEndereco.handle);
-routes.get('/client/pedidos',isAuthenticate,getPedidos.handle)
+routes.get('/client/pedidos',isAuthenticate,getPedidosClientController.handle)
 
 // Restaurante
-routes.post('/company/produto/signup',createProdutosController.handle);
-routes.post('/company/pedidos/aprove',isAuthenticate,aprovaPedidosController.handle);
-routes.get('/company/produtos/list',isAuthenticate,getProdutosController.handle);
-routes.post('/company/pedidos/cancela',isAuthenticate,cancelaPedidosRestaurante.handle);
-routes.get('/company/pedidos/',isAuthenticate,getPedidos.handle);
+routes.post('/company/produto/signup',isAuthenticateRestaurante,createProdutosController.handle);
+routes.post('/company/pedidos/aprove',isAuthenticateRestaurante,aprovaPedidosController.handle);
+routes.get('/company/produtos/list',isAuthenticateRestaurante,getProdutosController.handle);
+routes.post('/company/pedidos/cancela',isAuthenticateRestaurante,cancelaPedidosRestaurante.handle);
+routes.get('/company/pedidos/',isAuthenticateRestaurante,getPedidos.handle);
 routes.post('/company/login',authenticateRestaurante.handle)
 
 

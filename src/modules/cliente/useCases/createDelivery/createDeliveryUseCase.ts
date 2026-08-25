@@ -11,10 +11,11 @@ interface ICreateDelivery{
 export class CreateDeliveryUseCase{
 
  async execute({id_produto,preco,id_cliente,cliente_numero,forma_pagamento}:ICreateDelivery){
-  let date = new Date();
-  const day = date.getDay();
-  const month = date.getMonth();
+  const date = new Date();
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
+  const sufixo = Math.random().toString(36).slice(2, 6).toUpperCase();
 
   const client = await prisma.clientes.findFirst({
     where:{
@@ -23,8 +24,7 @@ export class CreateDeliveryUseCase{
       }
     }
   })
-  const codPedido = `PED${year}${month}${day} ${client?.nome}`
-  const nome = `PED${year}${month}${day} ${client?.nome}`
+  const codPedido = `PED-${year}${month}${day}-${sufixo}`
 
   const endereco = await prisma.endereco.findFirst({
     where:{
@@ -47,7 +47,7 @@ export class CreateDeliveryUseCase{
       try{
         const cadastraPedido = await prisma.pedidos.create({
           data:{
-            nome,
+            nome: produto.nome,
             id_produto,
             preco,
             id_cliente,
