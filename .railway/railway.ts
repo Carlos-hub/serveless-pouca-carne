@@ -15,9 +15,11 @@ export default defineRailway(() => {
 
   const api = service("api", {
     source: github("Carlos-hub/serveless-pouca-carne", { branch: "main" }),
-    build: "npm ci && npx prisma generate",
+    // compila no build: em produção o Railway remove as devDependencies,
+    // então ts-node não existe em runtime
+    build: "npm ci && npx prisma generate && npx tsc",
     // migrate deploy roda a cada release; o seed é idempotente
-    start: "npx prisma migrate deploy && npx prisma db seed && npx ts-node src/server.ts",
+    start: "npx prisma migrate deploy && node dist/prisma/seed.js && node dist/src/server.js",
     env: {
       DATABASE_URL: db.env.DATABASE_URL,
       // segredo fica no Railway, nunca no repositório
