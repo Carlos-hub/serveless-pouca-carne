@@ -15,11 +15,7 @@ export default defineRailway(() => {
 
   const api = service("api", {
     source: github("Carlos-hub/serveless-pouca-carne", { branch: "main" }),
-    // compila no build: em produção o Railway remove as devDependencies,
-    // então ts-node não existe em runtime
-    build: "npm ci && npx prisma generate && npx tsc",
-    // migrate deploy roda a cada release; o seed é idempotente
-    start: "npx prisma migrate deploy && node dist/prisma/seed.js && node dist/src/server.js",
+    // build e start vêm do Dockerfile, que o Railway usa por padrão quando existe
     env: {
       DATABASE_URL: db.env.DATABASE_URL,
       // segredo fica no Railway, nunca no repositório
@@ -29,11 +25,11 @@ export default defineRailway(() => {
 
   const web = service("web", {
     source: github("Carlos-hub/Pouca-carne", { branch: "main" }),
-    build: "npm ci && npm run build",
-    start: "npm start",
     env: {
       // Vite injeta no build: aponte para o domínio público da API
       VITE_API_URL: preserve(),
+      // porta alvo do domínio público, definida pelo Railway
+      APP_PORT: preserve(),
     },
   });
 

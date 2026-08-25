@@ -13,5 +13,8 @@ RUN npx prisma generate
 
 COPY . .
 
+# compile once at build time so runtime does not depend on ts-node
+RUN npx tsc
+
 EXPOSE 3333
-CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && npx ts-node src/server.ts"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/prisma/seed.js && node dist/src/server.js"]
