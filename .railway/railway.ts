@@ -28,8 +28,9 @@ export default defineRailway(() => {
     env: {
       // Vite injeta no build: aponte para o domínio público da API
       VITE_API_URL: preserve(),
-      // porta alvo do domínio público, definida pelo Railway
+      // portas definidas pelo Railway a partir do EXPOSE do Dockerfile
       APP_PORT: preserve(),
+      PORT: preserve(),
     },
   });
 

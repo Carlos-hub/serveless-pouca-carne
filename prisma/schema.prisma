@@ -2,7 +2,9 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  // o engine "library" (Node-API) segfaulta no runtime do Railway
+  engineType = "binary"
 }
 
 datasource db {
