@@ -14,7 +14,7 @@ export class GetDataClientUseCase{
    });
    const clientLocation = await prisma.endereco.findFirst({
     where:{
-      id
+      id_cliente: id
     }
    })
    const clientReturn = {

@@ -7,7 +7,6 @@ export class CreateDeliveryController{
   const { 
    id_produto,
    preco,
-   id_cliente,
    cliente_numero,
    forma_pagamento,
    } = request.body;
@@ -15,8 +14,8 @@ export class CreateDeliveryController{
    const createDeliveryUseCase = new CreateDeliveryUseCase();
    const createDelivery = await createDeliveryUseCase.execute({
     id_produto,
-    preco,
-    id_cliente,
+    preco: Number(preco),
+    id_cliente: request.user_id,
     cliente_numero,
     forma_pagamento
    })
